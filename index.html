@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MineCraft Quiz</title>
+    <meta name="description" content="Juego de preguntas sobre Minecraft para poner a prueba tus conocimientos del juego">
+    
+    <!-- PWA metatags -->
+    <meta name="theme-color" content="#37474F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MC Quiz">
+    <meta name="application-name" content="MineCraft Quiz">
+    <meta name="msapplication-TileColor" content="#37474F">
+    <meta name="msapplication-navbutton-color" content="#37474F">
+    
+    <!-- Estilos y recursos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#37474F">
+    
+    <!-- Íconos para diferentes plataformas -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="icons/apple-icon-167x167.png">
+    
+    <!-- Para evitar que los teléfonos detecten números, etc. -->
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Precarga de recursos críticos -->
+    <link rel="preload" href="fonts/minecraft.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="images/minecraft-logo.png" as="image">
 </head>
 <body>
     <!-- Pantalla de carga -->
@@ -61,14 +86,25 @@
         </div>
     </div>
 
+    <!-- Noscript para usuarios sin JavaScript -->
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #3B2813; color: white; display: flex; align-items: center; justify-content: center; text-align: center; z-index: 9999; padding: 20px;">
+            <p>Este juego requiere JavaScript para funcionar. Por favor habilita JavaScript en tu navegador.</p>
+        </div>
+    </noscript>
+
+    <!-- Scripts de aplicación -->
     <script src="app.js"></script>
     <script>
         // Registrar el Service Worker
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker registrado'))
-                    .catch(err => console.log('Error al registrar Service Worker', err));
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('sw.js');
+                    console.log('Service Worker registrado con éxito:', registration.scope);
+                } catch (error) {
+                    console.error('Error al registrar el Service Worker:', error);
+                }
             });
         }
     </script>

@@ -6,15 +6,33 @@
   "start_url": "/index.html",
   "scope": "/",
   "display": "fullscreen",
+  "display_override": ["window-controls-overlay"],
   "orientation": "landscape",
   "background_color": "#3B2813",
   "theme_color": "#37474F",
   "lang": "es",
   "dir": "ltr",
   "categories": ["games", "education", "entertainment"],
+  "iarc_rating_id": "e58c174a-81d2-5c5c-3350-b89e1f9363d0",
   "launch_handler": {
     "client_mode": ["navigate-new", "auto"]
   },
+  "shortcuts": [
+    {
+      "name": "Jugar",
+      "short_name": "Jugar",
+      "description": "Inicia una nueva partida",
+      "url": "/index.html?action=play",
+      "icons": [{ "src": "icons/play-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Ver Puntuación",
+      "short_name": "Puntuación",
+      "description": "Ver tus puntuaciones",
+      "url": "/index.html?action=score",
+      "icons": [{ "src": "icons/score-96x96.png", "sizes": "96x96" }]
+    }
+  ],
   "screenshots": [
     {
       "src": "images/screenshot1.png",
@@ -29,10 +47,29 @@
       "type": "image/png",
       "platform": "wide",
       "label": "Jugando al MineCraft Quiz"
+    },
+    {
+      "src": "images/screenshot-mobile1.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Menú principal en dispositivo móvil"
     }
   ],
   "related_applications": [],
   "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "file_handlers": [
+    {
+      "action": "/index.html?handler=open-file",
+      "accept": {
+        "application/json": [".mcquiz"]
+      }
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon-192x192.png",
@@ -55,6 +92,36 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/apple-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/apple-icon-167x167.png",
+      "sizes": "167x167",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/apple-icon-180x180.png",
+      "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     }

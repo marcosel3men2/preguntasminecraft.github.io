@@ -258,10 +258,53 @@ menuButton.addEventListener('click', () => {
     showScreen(menuScreen);
 });
 
+// Verificar parámetros URL para accesos directos
+function handleURLParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+    
+    if (action === 'play') {
+        // Iniciar juego directamente
+        setTimeout(() => {
+            showScreen(menuScreen);
+            startGame();
+        }, 500);
+    } else if (action === 'score') {
+        // Mostrar pantalla de puntuación
+        setTimeout(() => {
+            showScreen(menuScreen);
+        }, 500);
+    } else if (action === 'handler=open-file') {
+        // Manejar apertura de archivo
+        console.log('Manejando archivo de puntuación');
+        // Implementación futura para importar/exportar puntuaciones
+    }
+}
+
 // Inicializar el juego
 document.addEventListener('DOMContentLoaded', () => {
     loadScore();
-    simulateLoading();
+    
+    // Verificar si hay parámetros en la URL
+    if (window.location.search) {
+        handleURLParams();
+    } else {
+        simulateLoading();
+    }
+    
+    // Registrar para actualizaciones del manifest
+    if ('onappinstalled' in window) {
+        window.addEventListener('appinstalled', (event) => {
+            console.log('¡Aplicación instalada correctamente!');
+        });
+    }
+    
+    // Detectar si ya está instalada como PWA
+    if (window.matchMedia('(display-mode: standalone)').matches || 
+        window.matchMedia('(display-mode: fullscreen)').matches ||
+        window.navigator.standalone === true) {
+        console.log('PWA está siendo ejecutada en modo app');
+    }
 });
 
 // Evitar el scrolling en dispositivos móviles
