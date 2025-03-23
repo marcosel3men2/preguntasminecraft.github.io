@@ -1,21 +1,47 @@
 {
+  "id": "com.minecraftquiz.game",
   "name": "MineCraft Quiz",
   "short_name": "MC Quiz",
-  "description": "Juego de preguntas sobre Minecraft",
-  "start_url": "/",
+  "description": "Juego de preguntas sobre Minecraft para poner a prueba tus conocimientos del juego",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "fullscreen",
   "orientation": "landscape",
   "background_color": "#3B2813",
   "theme_color": "#37474F",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["games", "education", "entertainment"],
+  "launch_handler": {
+    "client_mode": ["navigate-new", "auto"]
+  },
+  "screenshots": [
+    {
+      "src": "images/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Pantalla de inicio del MineCraft Quiz"
+    },
+    {
+      "src": "images/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Jugando al MineCraft Quiz"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "images/icon-192x192.png",
+      "src": "icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "images/icon-512x512.png",
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

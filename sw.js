@@ -7,8 +7,10 @@ const urlsToCache = [
   '/manifest.json',
   '/images/minecraft-logo.png',
   '/images/minecraft-bg.jpg',
-  '/images/icon-512x512.png',
-  '/images/icon-192x192.png',
+  '/images/screenshot1.png',
+  '/images/screenshot2.png',
+  '/icons/icon-512x512.png',
+  '/icons/icon-192x192.png',
   '/fonts/minecraft.woff2'
 ];
 
