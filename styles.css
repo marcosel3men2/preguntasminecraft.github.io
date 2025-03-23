@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Minecraft', Arial, sans-serif;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('fonts/minecraft.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #2E2E2E;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/minecraft-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Forzar orientación horizontal */
+@media (orientation: portrait) {
+    body:before {
+        content: "Por favor, gira tu dispositivo para jugar";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+    }
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pantalla de carga */
+#loading-screen {
+    background-color: #3B2813;
+}
+
+.loading-container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+.loading-logo {
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #28170B;
+    border: 4px solid #553B2A;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #71B124;
+    transition: width 0.3s ease;
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 24px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* Pantalla de menú */
+#menu-screen {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.menu-container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(59, 40, 19, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    border: 4px solid #553B2A;
+}
+
+.game-title {
+    color: #FFD700;
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.score-display {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.btn {
+    background-color: #71B124;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-shadow: 2px 2px 0 #000;
+    box-shadow: 0 6px 0 #4C7A19;
+    position: relative;
+    top: 0;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #8CCE2F;
+}
+
+.btn:active {
+    top: 6px;
+    box-shadow: 0 0 0 #4C7A19;
+}
+
+/* Pantalla de juego */
+#game-screen {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#game-screen.active {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(59, 40, 19, 0.8);
+    border-radius: 10px;
+    border: 3px solid #553B2A;
+}
+
+.lives, .score {
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.heart {
+    margin-right: 5px;
+    font-size: 28px;
+}
+
+.question-container {
+    background-color: rgba(59, 40, 19, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    border: 4px solid #553B2A;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#question {
+    color: #FFD700;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-btn {
+    background-color: #4E71A7;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-shadow: 2px 2px 0 #000;
+    box-shadow: 0 4px 0 #344C72;
+    position: relative;
+    top: 0;
+    min-height: 80px;
+    outline: none;
+}
+
+.option-btn:hover {
+    background-color: #5A85C5;
+}
+
+.option-btn:active {
+    top: 4px;
+    box-shadow: 0 0 0 #344C72;
+}
+
+.option-btn.correct {
+    background-color: #71B124;
+}
+
+.option-btn.incorrect {
+    background-color: #B12424;
+}
+
+/* Pantalla de game over */
+#gameover-screen {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.gameover-container {
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    background-color: rgba(59, 40, 19, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    border: 4px solid #553B2A;
+}
+
+.gameover-container h2 {
+    color: #FF5252;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.gameover-container p {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.gameover-container .btn {
+    margin: 10px;
+    display: inline-block;
+}
+
+#restart-button {
+    background-color: #71B124;
+}
+
+#menu-button {
+    background-color: #4E71A7;
+} 

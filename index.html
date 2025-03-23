@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MineCraft Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#37474F">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-container">
+            <img src="images/minecraft-logo.png" alt="Minecraft Logo" class="loading-logo">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="loading-text">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Pantalla de menú -->
+    <div id="menu-screen" class="screen">
+        <div class="menu-container">
+            <h1 class="game-title">MineCraft Quiz</h1>
+            <div class="score-display">Puntos: <span id="total-score">0</span></div>
+            <button id="play-button" class="btn">JUGAR</button>
+        </div>
+    </div>
+
+    <!-- Pantalla de juego - Está asegurado que solo se muestre cuando tenga la clase active -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="lives">
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+            </div>
+            <div class="score">Puntos: <span id="current-score">0</span></div>
+        </div>
+        <div class="question-container">
+            <h2 id="question">¿Pregunta sobre Minecraft?</h2>
+            <div class="options-container">
+                <button class="option-btn" data-index="0"></button>
+                <button class="option-btn" data-index="1"></button>
+                <button class="option-btn" data-index="2"></button>
+                <button class="option-btn" data-index="3"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de game over -->
+    <div id="gameover-screen" class="screen">
+        <div class="gameover-container">
+            <h2>¡Juego Terminado!</h2>
+            <p>Tu puntuación: <span id="final-score">0</span></p>
+            <button id="restart-button" class="btn">Jugar de nuevo</button>
+            <button id="menu-button" class="btn">Menú principal</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Error al registrar Service Worker', err));
+            });
+        }
+    </script>
+</body>
+</html> 
